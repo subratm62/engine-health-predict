@@ -21,7 +21,7 @@ import joblib
 import json
 import os
 # for hugging face space authentication to upload files
-from huggingface_hub import login, HfApi, create_repo
+from huggingface_hub import login, HfApi, create_repo, hf_hub_download
 from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
 import mlflow
 
@@ -30,6 +30,34 @@ import mlflow
 # -------------------------------
 mlflow.set_tracking_uri("http://localhost:5000")
 mlflow.set_experiment("Predictive-Maintenance")
+
+
+# -------------------------------
+# Load dataset
+# -------------------------------
+REPO_ID = "subratm62/predictive_maintenance"
+REPO_TYPE = "dataset"
+
+def load_csv(filename):
+    path = hf_hub_download(
+        repo_id=REPO_ID,
+        filename=filename,
+        repo_type=REPO_TYPE
+    )
+    return pd.read_csv(path)
+
+# Load all datasets
+Xtrain = load_csv("Xtrain.csv")
+Xtest  = load_csv("Xtest.csv")
+Xval  = load_csv("Xval.csv")
+ytrain = load_csv("ytrain.csv")
+ytest  = load_csv("ytest.csv")
+yval  = load_csv("yval.csv")
+
+
+ytrain = ytrain.to_numpy().ravel()
+yval = yval.to_numpy().ravel()
+ytest = ytest.to_numpy().ravel()
 
 # -------------------------------
 # Features
