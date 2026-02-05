@@ -15,7 +15,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import RandomizedSearchCV, StratifiedKFold
 from imblearn.over_sampling import RandomOverSampler
 from scipy.stats import uniform, randint
-from sklearn.metrics import make_scorer, accuracy_score, classification_report, recall_score, precision_recall_curve, auc
+from sklearn.metrics import make_scorer, f1_score, accuracy_score, classification_report, recall_score, precision_recall_curve, auc
 # for model serialization
 import joblib
 import json
