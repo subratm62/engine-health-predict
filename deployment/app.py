@@ -29,7 +29,7 @@ def load_model():
 
 model = load_model()
 
-# Classification threshold (your tuned value)
+# Classification threshold
 classification_threshold = 0.50
 
 # ---------------------------------------------------
@@ -58,7 +58,7 @@ with col1:
     engine_rpm = st.number_input(
         "Engine RPM",
         min_value=0.0,
-        max_value=3000.0,
+        max_value=5000.0,
         value=750.0
     )
 
@@ -72,7 +72,7 @@ with col1:
     fuel_pressure = st.number_input(
         "Fuel Pressure",
         min_value=0.0,
-        max_value=25.0,
+        max_value=50.0,
         value=6.0
     )
 
@@ -86,15 +86,15 @@ with col2:
 
     lub_oil_temp = st.number_input(
         "Lub Oil Temperature",
-        min_value=60.0,
-        max_value=120.0,
+        min_value=50.0,
+        max_value=150.0,
         value=77.0
     )
 
     coolant_temp = st.number_input(
         "Coolant Temperature",
         min_value=50.0,
-        max_value=200.0,
+        max_value=250.0,
         value=78.0
     )
 
@@ -126,7 +126,7 @@ if st.button("🔍 Predict Failure Risk"):
 
     if prediction == 1:
         st.error(
-            "⚠ HIGH FAILURE RISK — Maintenance inspection recommended."
+            "⚠ FAILURE RISK — Maintenance inspection recommended."
         )
     else:
         st.success(
