@@ -3,7 +3,7 @@ from huggingface_hub import login, HfApi, create_repo
 from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
 
 HF_TOKEN = os.getenv("HF_TOKEN")
-REPO_ID = "subratm62/Engine-Maintenance-Prediction"   # space repo
+REPO_ID = "subratm62/Engine-Health-Prediction"   # space repo
 REPO_TYPE = "space"
 
 api = HfApi(token=HF_TOKEN)

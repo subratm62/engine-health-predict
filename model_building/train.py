@@ -140,20 +140,20 @@ with mlflow.start_run():
     # Log every param set
     results = search.cv_results_
 
-    #for i, params in enumerate(results["params"]):
-    #    with mlflow.start_run(nested=True):
+    for i, params in enumerate(results["params"]):
+        with mlflow.start_run(nested=True):
             # Log hyperparameters
-    #        mlflow.log_params(params)
+            mlflow.log_params(params)
     
             # Log CV metrics
-    #        mlflow.log_metric("mean_test_f1_macro", results["mean_test_score"][i])
-    #        mlflow.log_metric("std_test_f1_macro", results["std_test_score"][i])
-    #        mlflow.log_metric("rank_test_f1_macro", results["rank_test_score"][i])
+            mlflow.log_metric("mean_test_f1_macro", results["mean_test_score"][i])
+            mlflow.log_metric("std_test_f1_macro", results["std_test_score"][i])
+            mlflow.log_metric("rank_test_f1_macro", results["rank_test_score"][i])
     
             # Helpful metadata
-    #        mlflow.set_tag("trial_number", i + 1)
-    #        mlflow.set_tag("cv_folds", cv.get_n_splits())
-    #        mlflow.set_tag("scoring_metric", "f1_macro")
+            mlflow.set_tag("trial_number", i + 1)
+            mlflow.set_tag("cv_folds", cv.get_n_splits())
+            mlflow.set_tag("scoring_metric", "f1_macro")
             
     # Log best parameters
     mlflow.log_params(search.best_params_)
